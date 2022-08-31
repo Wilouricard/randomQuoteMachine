@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let quoteBank = [
+            {
+                quote: "Later is too late.",
+                author: "@shaileJa_7"
+            },
+            {
+                quote: "Je peux te dire une chose: déménager, aller dans l'endroit où tu rêves d'être, c'est là que tu as avoir l'énergie pour pouvoir vire la vie que tu veux.",
+                author: "Roger Lannoy"
+            },
+            {
+                quote: "Fake it until you make it.",
+                author: "Rihanna"
+            },
+            {
+                quote: "Face it until you make it.",
+                author: "@SwetaKukreja_"
+            },
+
+        ];
+
+
+        window.onload = init;
+        function init() {
+            generateQuote()
+        }
+
+        function generateQuote() {
+            let quoteSize = quoteBank.length;
+            let randomIndex = Math.floor(Math.random() * quoteSize);
+            let randomQuoteData = quoteBank[randomIndex];
+
+            let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="
+            
+            let quoteInApiFormat = randomQuoteData.quote.replace(/ /g, "%20");
+            twitterLink += '"' + quoteInApiFormat + '"'
+
+            let authorInApiFormat = randomQuoteData.author.replace(/ /g, "%20");
+            twitterLink += " - " + authorInApiFormat
+
+            //Add the citation ici
+            
+            // ajouter the author ici
+
+
+
+            
+            document.getElementById("tweet-quote").href = twitterLink;
+            document.getElementById("text").innerText = randomQuoteData.quote;
+            document.getElementById("author").innerText = randomQuoteData.author;
+        }
+    </script>
+
+    <style>
+        * {
+            font-size: 1.5rem;
+            margin: 20px 20px 20p 20px;
+            text-align: center;
+            padding: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <wrapper id="quote-box">
+        <div id="text">
+        </div>
+        <div id="author">
+        </div>
+        <button id="new-quote" onClick="generateQuote()">New Quote
+        </button>
+        <a href="twit" id="tweet-quote" class="button" target="_blank">Tweet Quote</a>
+    </wrapper>
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
+ 
